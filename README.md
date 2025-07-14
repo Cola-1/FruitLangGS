@@ -1,9 +1,6 @@
-This repository contains the official authors implementation associated with the paper "FruitGS".
+# CountingFruit: Real-Time 3D Fruit Counting with Language-Guided Semantic Gaussian Splatting
 
-The repository contains submodules, thus please check it out with
-# SSH
-git clone git@github.com:Cola-1/FruitGS.git --recursive
-# HTTPS
-git clone https://github.com/Cola-1/FruitGS.git --recursive
+This repository contains the official implementation of the paper:
 
-Please download open_clip_pytorch_model.bin from "https://huggingface.co/laion/CLIP-ViT-B-16-laion2B-s34B-b88K/resolve/main/open_clip_pytorch_model.bin?download=true". Then place this file into the "clip_vit_b16" folder.
+**CountingFruit: Real-Time 3D Fruit Counting with Language-Guided Semantic Gaussian Splatting**  
+📄 [Paper on arXiv](https://arxiv.org/abs/2506.01109)
