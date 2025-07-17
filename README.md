@@ -23,13 +23,10 @@ This repository contains the **official implementation** of the paper:
 
 ## 🧾 Abstract
 
-<div align="center" style="max-width: 800px; margin: auto; font-size: 0.9em;">
-
-<p style="text-align: justify;">
+<div style="max-width: 800px; margin: auto; font-size: 0.9em;">
 
 accurate fruit counting in real-world agricultural environments is a longstanding challenge due to visual occlusions, semantic ambiguity, and the high computational demands of 3d reconstruction. existing methods based on neural radiance fields suffer from low inference speed, poor generalization, and limited support for open-set semantic control. this paper presents fruitlanggs, a real-time 3d fruit counting system designed to address these limitations through a unified and explicit representation of both spatial and semantic information. fruitlanggs models a fruit scene as a collection of adaptive 3d gaussians, each augmented with compressed language features aligned to clip embeddings. these gaussians are jointly optimized to encode geometry, appearance, and prompt-resolvable semantics during training. at inference time, the system supports direct language-guided filtering of fruit regions in 3d space without requiring per-frame segmentation or multi-view fusion. to ensure high rendering efficiency, fruitlanggs incorporates an adaptive radius-based early culling strategy and a tile-level load balancing mechanism, enabling stable performance exceeding 300 fps on real orchard data. the semantically filtered gaussians are further converted into dense point clouds for robust clustering and fruit counting. experimental results demonstrate that fruitlanggs surpasses prior approaches in rendering speed and counting accuracy, establishing a novel direction for language-driven real-time neural rendering in agricultural applications.
 
-</p>
 </div>
 
 
