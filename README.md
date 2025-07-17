@@ -1,7 +1,7 @@
 # 🍎 CountingFruit: Real-Time 3D Fruit Counting with Language-Guided Semantic Gaussian Splatting
 
 <p align="center">
-  <img src="assets/mainless1.png" alt="CountingFruit Teaser" width="80%">
+  <img src="assets/mainless1.png" alt="CountingFruit Teaser" width="95%">
 </p>
 
 This repository contains the **official implementation** of the paper:
