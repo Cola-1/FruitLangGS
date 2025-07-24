@@ -22,9 +22,7 @@ except ImportError:
 
 
 def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoint_iterations, checkpoint, debug_from):
-    """Main training loop. Added language feature support controlled by ``opt.include_feature``.
-    Other logic is kept identical to the original implementation.
-    """
+   
 
     first_iter = 0
     tb_writer = prepare_output_and_logger(dataset)
@@ -85,7 +83,7 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
         if iteration % 1000 == 0:
             gaussians.oneupSHdegree()
 
-        #
+        
         if not viewpoint_stack:
             viewpoint_stack = scene.getTrainCameras().copy()
         viewpoint_cam = viewpoint_stack.pop(randint(0, len(viewpoint_stack) - 1))
@@ -104,29 +102,29 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
 
         
         if opt.include_feature:
-            # Retrieve ground‑truth language feature and mask
+            
             gt_language_feature, language_feature_mask = viewpoint_cam.get_language_feature(
                 language_feature_dir=dataset.lf_path,
                 feature_level=dataset.feature_level
             )
 
-            # Element‑wise masked L1 loss on language feature map
+            
             Ll1 = l1_loss(language_feature * language_feature_mask,
                           gt_language_feature * language_feature_mask)
-            loss = Ll1  # No SSIM or load regularisation when using language feature
+            loss = Ll1  
         else:
             gt_image = viewpoint_cam.original_image.cuda()
             Ll1 = l1_loss(image, gt_image)
-            # Base image loss with optional SSIM weighting
+            
             loss = (1.0 - opt.lambda_dssim) * Ll1 + opt.lambda_dssim * (1.0 - ssim(image, gt_image))
 
-            # Optional load‑distribution regulariser (kept exactly as original)
+            
             if load_distribution is not None:
                 load_loss = torch.std(load_distribution)
-                # Normalise magnitudes via log‑scale adjustment
+                
                 loss_adj = math.floor(math.log10(load_loss)) - math.floor(math.log10(loss))
                 load_loss = load_loss / math.pow(10, loss_adj + 1.0)
-                # Combined objective
+                
                 loss = loss * (1 - opt.lambda_load) + opt.lambda_load * load_loss
 
         loss.backward()
