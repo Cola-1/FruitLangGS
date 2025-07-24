@@ -69,7 +69,7 @@ def render_sets(dataset : ModelParams, iteration : int, pipeline : PipelineParam
              render_set(dataset.model_path, dataset.source_path, "test", scene.loaded_iter, scene.getTestCameras(), gaussians, pipeline, background, args)
 
 if __name__ == "__main__":
-    # Set up command line argument parser
+    
     
     parser = ArgumentParser(description="Testing script parameters")
     model = ModelParams(parser, sentinel=True)
