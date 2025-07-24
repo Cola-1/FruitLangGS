@@ -32,9 +32,7 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
     scene = Scene(dataset, gaussians)
     gaussians.training_setup(opt)
 
-    # ---------------------------------------------------------------------
-    #  Checkpoint restore (unchanged, but required when include_feature=True)
-    # ---------------------------------------------------------------------
+    
     if opt.include_feature:
         if not checkpoint:
             raise ValueError("checkpoint missing!!!!!")
@@ -45,9 +43,7 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
             first_iter = 0
         gaussians.restore(model_params, opt)
 
-    # ---------------------------------------------------------------------
-    #  Misc. initialisation
-    # ---------------------------------------------------------------------
+    
     bg_color = [1, 1, 1] if dataset.white_background else [0, 0, 0]
     background = torch.tensor(bg_color, dtype=torch.float32, device="cuda")
 
@@ -59,13 +55,9 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
     progress_bar = tqdm(range(first_iter, opt.iterations), desc="Training progress")
     first_iter += 1
 
-    # =====================================================================
-    #  Training iterations
-    # =====================================================================
+    
     for iteration in range(first_iter, opt.iterations + 1):
-        # --------------------------------------------------------------
-        #  GUI communication (unchanged)
-        # --------------------------------------------------------------
+        
         if network_gui.conn is None:
             network_gui.try_connect()
         while network_gui.conn is not None:
@@ -88,16 +80,12 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
 
         iter_start.record()
 
-        # --------------------------------------------------------------
-        #  LR schedule + SH degree schedule (unchanged)
-        # --------------------------------------------------------------
+        
         gaussians.update_learning_rate(iteration)
         if iteration % 1000 == 0:
             gaussians.oneupSHdegree()
 
-        # --------------------------------------------------------------
-        #  Pick camera and render
-        # --------------------------------------------------------------
+        #
         if not viewpoint_stack:
             viewpoint_stack = scene.getTrainCameras().copy()
         viewpoint_cam = viewpoint_stack.pop(randint(0, len(viewpoint_stack) - 1))
@@ -114,9 +102,7 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
         radii = render_pkg["radii"]
         load_distribution = render_pkg.get("load_distribution", None)
 
-        # --------------------------------------------------------------
-        #  Loss computation
-        # --------------------------------------------------------------
+        
         if opt.include_feature:
             # Retrieve ground‑truth language feature and mask
             gt_language_feature, language_feature_mask = viewpoint_cam.get_language_feature(
@@ -146,11 +132,9 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
         loss.backward()
         iter_end.record()
 
-        # --------------------------------------------------------------
-        #  Logging, densification, optimiser step, checkpoints (unchanged)
-        # --------------------------------------------------------------
+        
         with torch.no_grad():
-            # ----- progress bar -----
+           
             ema_loss_for_log = 0.4 * loss.item() + 0.6 * ema_loss_for_log
             if iteration % 10 == 0:
                 progress_bar.set_postfix({"Loss": f"{ema_loss_for_log:.7f}"})
@@ -158,14 +142,14 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
             if iteration == opt.iterations:
                 progress_bar.close()
 
-            # ----- logging & saving -----
+            
             training_report(tb_writer, iteration, Ll1, loss, l1_loss, iter_start.elapsed_time(iter_end),
                             testing_iterations, scene, render, (pipe, background, opt))
             if iteration in saving_iterations:
                 print(f"\n[ITER {iteration}] Saving Gaussians")
                 scene.save(iteration)
 
-            # ----- densification & pruning -----
+            
             if not opt.include_feature and iteration < opt.densify_until_iter:
                 gaussians.max_radii2D[visibility_filter] = torch.max(
                     gaussians.max_radii2D[visibility_filter], radii[visibility_filter]
@@ -180,12 +164,12 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
                         (dataset.white_background and iteration == opt.densify_from_iter):
                     gaussians.reset_opacity()
 
-            # ----- optimiser update -----
+            
             if iteration < opt.iterations:
                 gaussians.optimizer.step()
                 gaussians.optimizer.zero_grad(set_to_none=True)
 
-            # ----- checkpoint save -----
+            
             if iteration in checkpoint_iterations:
                 print(f"\n[ITER {iteration}] Saving Checkpoint")
                 torch.save((gaussians.capture(opt.include_feature), iteration),
@@ -211,7 +195,7 @@ def prepare_output_and_logger(args):
     return tb_writer
 
 
-# -------------------------- training_report (unchanged) --------------------------
+
 
 def training_report(tb_writer, iteration, Ll1, loss, l1_loss, elapsed,
                     testing_iterations, scene: Scene, renderFunc, renderArgs):
@@ -262,7 +246,7 @@ def training_report(tb_writer, iteration, Ll1, loss, l1_loss, elapsed,
         torch.cuda.empty_cache()
 
 
-# ---------------------------- entry‑point (unchanged) ----------------------------
+
 if __name__ == "__main__":
     parser = ArgumentParser(description="Training script parameters")
     lp = ModelParams(parser)
