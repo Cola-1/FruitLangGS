@@ -234,9 +234,7 @@ python gs2pc/gauss_to_pc.py \
 
 
 **Step 8:Clustering and Counting**
-```shell
-python clustering/run_clustering.py
-```
+
 
 Before running the clustering script, make sure to modify the following files:
 
@@ -245,12 +243,12 @@ Before running the clustering script, make sure to modify the following files:
 Locate and modify the line:
 
 ```python
-Baum_01_unet = { "path": "<path to tree01_pc.ply>" }
+Baum_01_unet = { "path": "<path to scene_name_pc.ply>" }
 ```
 
 Replace the path string with the full path to the `.ply` point cloud you just generated (e.g., from `gauss_to_pc.py`).
 
-#### 🧩 `run_clustering.py`
+#### 🧩 `clustering/run_clustering.py`
 
 Also ensure that the correct scene name is included in the active clustering list:
 
