@@ -52,7 +52,7 @@ git clone https://github.com/Cola-1/FruitLangGS.git --recursive
 ---
 
 ## Datasets
-In the experiments section of our paper, we primarily utilized two datasets: the FruitNeRF Benchmark dataset, PFuji-Size dataset and other three trees (Galafab-West, Schnico-Red-East, Schniga-Schnico-
+In the experiments section of our paper, we primarily utilized three datasets: the FruitNeRF Benchmark dataset, PFuji-Size dataset and other three trees (Galafab-West, Schnico-Red-East, Schniga-Schnico-
 West) dataset.
 
 The  FruitNeRF Benchmark (3Tree and Fuji-SfM) dataset is accessible for download via the following link: [3Tree Dataset](https://zenodo.org/records/10869455) and the [Fuji-SfM Dataset](https://zenodo.org/records/3712808) .
@@ -62,6 +62,27 @@ The  PFuji-Size (Orch2018 and Orch2020) dataset is accessible for download via t
 The  Galafab-West, Schnico-Red-East, Schniga-Schnico-West dataset is accessible for download via the following link: [ Galafab-West, Schnico-Red-East, Schniga-Schnico-West Dataset](https://www.siscog.pt/en-gb/lp/paper-v4a2024/).
 
 
+---
+
+### Setup
+
+#### Environment Setup
+
+Our default, provided install method is based on Conda package and environment management:
+```shell
+conda env create --file environment.yml
+conda activate fruitlanggs
+
+
+---
+
+## Processing your own Scenes
+
+### Before getting started
+
+Please download open_clip_pytorch_model.bin from "https://huggingface.co/laion/CLIP-ViT-B-16-laion2B-s34B-b88K". Then place this file into the "clip_vit_b16" folder.
+
+Please download sam_vit_h_4b8939.pth from " https://huggingface.co/HCMUE-Research/SAM-vit-h". Then place this file into the "ckpts" folder.
 ---
 
 ## 📜 Citation
