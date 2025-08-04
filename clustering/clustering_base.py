@@ -372,7 +372,7 @@ class FruitClustering(object):
             elif hasattr(alpha_shape, "as_open3d"):
                 alpha_shape_pcd = alpha_shape.as_open3d.sample_points_uniformly(1000)
             else:
-                raise TypeError(f"Unsupported alpha shape type: {type(alpha_shape)}")
+                continue
 
 
             # alpha_shape_pcd = alpha_shape_pcd.translate(-alpha_shape_pcd.get_center())
@@ -479,6 +479,8 @@ class FruitClustering(object):
                 number_of_correctly_counted_objects = 0
                 for cluster, cluster_pcd in zip(cluster_centers, cluster_single):
                     distance = np.linalg.norm(np.asarray(gt_center_copy) - cluster, axis=1)
+                    if distance.size == 0:
+                        continue
                     nearest_center_id = np.argmin(distance)
 
                     if distance[nearest_center_id] < 0.15:  # 0.15
@@ -507,9 +509,24 @@ class FruitClustering(object):
             self.false_negative = gt_center_copy.shape[0]
             self.true_positive = number_of_correctly_counted_objects
 
-            self.precision = self.true_positive / (self.true_positive + self.false_positive)
-            self.recall = self.true_positive / (self.true_positive + self.false_negative)
-            self.F1 = 2 * self.precision * self.recall / (self.precision + self.recall)
+            tp = self.true_positive
+            fp = self.false_positive
+            fn = self.false_negative
+    
+            if tp + fp > 0:
+                self.precision = tp / (tp + fp)
+            else:
+                self.precision = 0.0
+    
+            if tp + fn > 0:
+                self.recall = tp / (tp + fn)
+            else:
+                self.recall = 0.0
+    
+            if (self.precision + self.recall) > 0:
+                self.F1 = 2 * self.precision * self.recall / (self.precision + self.recall)
+            else:
+                self.F1 = 0.0
 
             print("Counting result: {}/{}".format(number_of_correctly_counted_objects, number_of_gt_objects))
             print("Precision: {}".format(self.precision))
