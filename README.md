@@ -99,9 +99,9 @@ Please install [segment-anything-langsplat](https://github.com/minghanqin/segmen
 ### Start
 **Step 1: Gaussian Reconstruction**
 
-We provide necessary pretrained models [BaiduWangpan](https://pan.baidu.com/s/17r9WV4w1GAUGMMOb-08WQQ?pwd=83f9) | [GoogleDrive](https://drive.google.com/drive/folders/1MpD-Kz8B_4EWuOszln_Zhl-b1XeCtShO?usp=drive_link) Download the archive from our Releases page and extract it into the project root.
+We provide pretrained models [BaiduWangpan](https://pan.baidu.com/s/17r9WV4w1GAUGMMOb-08WQQ?pwd=83f9) | [GoogleDrive](https://drive.google.com/drive/folders/1MpD-Kz8B_4EWuOszln_Zhl-b1XeCtShO?usp=drive_link) Download the archive from our Releases page and extract it into the project root.
 
-Using our pretrained models and organizing your data following the [3dgs](https://github.com/graphdeco-inria/gaussian-splatting) repository format. 
+Using pretrained models and organizing the data following the [3dgs](https://github.com/graphdeco-inria/gaussian-splatting) repository format. 
 
 **Step 2: Preprocess language features**
 ```
