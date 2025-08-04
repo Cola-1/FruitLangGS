@@ -82,7 +82,7 @@ if __name__ == '__main__':
                               Baum_03_unet, Baum_03_unet_Big, Baum_03_SAM, Baum_03_SAM_Big)
     from config_real import Fuji_unet, Fuji_unet_big, Fuji_sam, Fuji_sam_big
 
-    Baums = [Baum_01_unet]
+    Baums = [Fuji_sam]
 
     results = {}
 
