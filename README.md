@@ -72,7 +72,7 @@ Our default, provided install method is based on Conda package and environment m
 ```shell
 conda env create --file environment.yml
 conda activate fruitlanggs
-
+```
 
 ---
 
@@ -83,6 +83,7 @@ conda activate fruitlanggs
 Please download open_clip_pytorch_model.bin from "https://huggingface.co/laion/CLIP-ViT-B-16-laion2B-s34B-b88K". Then place this file into the "clip_vit_b16" folder.
 
 Please download sam_vit_h_4b8939.pth from " https://huggingface.co/HCMUE-Research/SAM-vit-h". Then place this file into the "ckpts" folder.
+
 ---
 
 ## 📜 Citation
