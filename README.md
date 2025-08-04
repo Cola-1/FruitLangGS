@@ -236,7 +236,13 @@ python clustering/run_clustering.py
 ```
 > ✅ The final output will include the estimated 3D fruit count.
 ---
+## TODO list:
+- [x] update the arxiv link
+- [x] release the preprocessed dataset and the pretrained model
+- [x] release more preprocessed dataset and the pretrained model (coming soon)
+- [x] release the code of the eval
 
+---
 ## 📜 Citation
 
 If you find this work useful, please consider citing:
