@@ -37,6 +37,20 @@ accurate fruit counting in real-world agricultural environments is a longstandin
 
 ---
 
+## Cloning the Repository
+
+The repository contains submodules, thus please check it out with 
+```shell
+# SSH
+git clone git@github.com:Cola-1/FruitLangGS.git --recursive
+```
+or
+```shell
+# HTTPS
+git clone https://github.com/Cola-1/FruitLangGS.git --recursive
+```
+---
+
 ## 📜 Citation
 
 If you find this work useful, please consider citing:
