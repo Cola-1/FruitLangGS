@@ -51,6 +51,19 @@ git clone https://github.com/Cola-1/FruitLangGS.git --recursive
 ```
 ---
 
+## Datasets
+In the experiments section of our paper, we primarily utilized two datasets: the FruitNeRF Benchmark dataset, PFuji-Size dataset and other three trees (Galafab-West, Schnico-Red-East, Schniga-Schnico-
+West) dataset.
+
+The  FruitNeRF Benchmark (3Tree and Fuji-SfM) dataset is accessible for download via the following link: [3Tree Dataset](https://zenodo.org/records/10869455) and the [Fuji-SfM Dataset](https://zenodo.org/records/3712808) .
+
+The  PFuji-Size (Orch2018 and Orch2020) dataset is accessible for download via the following link: [PFuji-Size Dataset](https://dataverse.csuc.cat/dataset.xhtml?persistentId=doi:10.34810/data141).
+
+The  Galafab-West, Schnico-Red-East, Schniga-Schnico-West dataset is accessible for download via the following link: [ Galafab-West, Schnico-Red-East, Schniga-Schnico-West Dataset](https://www.siscog.pt/en-gb/lp/paper-v4a2024/).
+
+
+---
+
 ## 📜 Citation
 
 If you find this work useful, please consider citing:
