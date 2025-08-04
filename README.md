@@ -84,59 +84,40 @@ Please download open_clip_pytorch_model.bin from "https://huggingface.co/laion/C
 
 Please install [segment-anything-langsplat](https://github.com/minghanqin/segment-anything-langsplat) and download the checkpoints of SAM from [here](https://github.com/facebookresearch/segment-anything) to ```ckpts/``` or download sam_vit_h_4b8939.pth from " https://huggingface.co/HCMUE-Research/SAM-vit-h" to ```ckpts/```.
 
-### start
-**Step 1:Gaussian Reconstruction**
+### Start
+**Step 1: Gaussian Reconstruction**
 
 We provide necessary pretrained models [BaiduWangpan](https://pan.baidu.com/s/17r9WV4w1GAUGMMOb-08WQQ?pwd=83f9) | [GoogleDrive](https://drive.google.com/drive/folders/1MpD-Kz8B_4EWuOszln_Zhl-b1XeCtShO?usp=drive_link) Download the archive from our Releases page and extract it into the project root.
 
 Using our pretrained models and organizing your data following the [3dgs](https://github.com/graphdeco-inria/gaussian-splatting) repository format. 
 
-**Step 2:Preprocess language features**
+**Step 2: Preprocess language features**
 ```
 python preprocess.py --dataset_path scene_name
 ```
 
-**Step 3:Train semantic autoencoder**
+**Step 3: Train semantic autoencoder**
 ```
 cd autoencoder
-python train.py \
-  --dataset_path ../FruitLangGS/scene_name \
-  --dataset_name data_yourScene \
-  --encoder_dims 256 128 64 32 3 \
-  --decoder_dims 16 32 64 128 256 256 512 \
-  --lr 7e-4
+python train.py --dataset_path ../FruitLangGS/scene_name --dataset_name data_yourScene --encoder_dims 256 128 64 32 3 --decoder_dims 16 32 64 128 256 256 512 --lr 7e-4
 ```
 
-**Step 4:Generate 3D semantic features**
+**Step 4: Generate 3D semantic features**
 ```
-python test.py \
-  --dataset_path ../FruitLangGS/scene_name \
-  --dataset_name scene_name 
+python test.py --dataset_path ../FruitLangGS/scene_name --dataset_name scene_name
 ```
 
 
-**Step 5:Multi-level language-conditioned training**
+**Step 5: Multi-level language-conditioned training**
 Back to folder ```FruitLangGs/```
 ```
-python train.py \
-  -s scene_name  \
-  -m output \
-  --start_checkpoint scene_name/output/chkpnt30000.pth \
-  --feature_level 1
-# Repeat for feature_level = 1, 2, 3
+python train.py -s scene_name -m output --start_checkpoint scene_name/output/chkpnt30000.pth --feature_level 1
+# Repeat with --feature_level 2 and 3 as needed
 ```
 
-**Step 6:Prompt-Based Semantic Segmentation**
+**Step 6: Prompt-Based Semantic Segmentation**
 ```
-python semantic_segmentation.py \
-  --checkpoint_path  output_1/chkpnt30000.pth \
-  --prompts          "apple" "fruit" \
-  --N_prompts        "tree"  "leaf"  \
-  --cosine_thresh    0.22555 \
-  --neg_thresh       0.261255 \
-  --cube_size        4 \
-  --autoencoder_ckpt autoencoder/ckpt/scene_name/best_ckpt.pth
-
+python semantic_segmentation.py --checkpoint_path output_1/chkpnt30000.pth --prompts "apple" "fruit" --N_prompts "tree" "leaf" --cosine_thresh 0.22555 --neg_thresh 0.261255 --cube_size 4 --autoencoder_ckpt autoencoder/ckpt/scene_name/best_ckpt.pth
 ```
 
 <details>
@@ -165,18 +146,9 @@ python semantic_segmentation.py \
 
 </details>
 
-**Step 7:Point-Cloud Sampling**
+**Step 7: Point-Cloud Sampling**
 ```
-python gs2pc/gauss_to_pc.py \
-  --input_path        apple_fruit.ply \
-  --num_points        2100000 \
-  --min_opacity       0.1 \
-  --colour_quality    ultra \
-  --exact_num_points \
-  --clean_pointcloud \
-  --output_path       scene_name/scene_name_pc.ply \
-  --max_sh_degree     0 \
-  --no_render_colours
+python gs2pc/gauss_to_pc.py --input_path apple_fruit.ply --num_points 2100000 --min_opacity 0.1 --colour_quality ultra --exact_num_points --clean_pointcloud --output_path scene_name/scene_name_pc.ply --max_sh_degree 0 --no_render_colours
 ```
 
 <details>
@@ -233,7 +205,7 @@ python gs2pc/gauss_to_pc.py \
 </details>
 
 
-**Step 8:Clustering and Counting**
+**Step 8: Clustering and Counting**
 
 
 Before running the clustering script, make sure to modify the following files:
