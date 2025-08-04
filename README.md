@@ -37,6 +37,16 @@ accurate fruit counting in real-world agricultural environments is a longstandin
 
 ---
 
+## Overview
+
+- Scene Reconstruction with Adaptive Splatting
+- Language-Conditioned Semantic Embedding
+- Prompt-Based Filtering and Counting
+
+
+
+---
+
 ## Cloning the Repository
 
 The repository contains submodules, thus please check it out with 
@@ -49,8 +59,10 @@ or
 # HTTPS
 git clone https://github.com/Cola-1/FruitLangGS.git --recursive
 ```
----
 
+
+
+---
 ## Datasets
 In the experiments section of our paper, we primarily utilized three datasets: the FruitNeRF Benchmark dataset, PFuji-Size dataset and other three trees (Galafab-West, Schnico-Red-East, Schniga-Schnico-
 West) dataset.
