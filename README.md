@@ -1,7 +1,7 @@
-# 🍎 CountingFruit: Real-Time 3D Fruit Counting with Language-Guided Semantic Gaussian Splatting
+# 🍎 CountingFruit: Language-Guided 3D Fruit Counting with Semantic Gaussian Splatting
 
 <p align="center">
-  <img src="assets/mainless1.png" alt="CountingFruit Teaser" width="95%">
+  <img src="assets/fig1.png" alt="CountingFruit Teaser" width="95%">
 </p>
 
 This repository contains the **official implementation** of the paper:
@@ -37,13 +37,15 @@ Accurate 3D fruit counting in orchards is challenging due to heavy occlusion, se
 
 ---
 
+<p align="center">
+  <img src="assets/main.png" alt="CountingFruit Teaser" width="95%">
+</p>
+
 ## Overview
 
 - Scene Reconstruction with Adaptive Splatting
 - Language-Conditioned Semantic Embedding
 - Prompt-Based Filtering and Counting
-
-
 
 ---
 
@@ -64,8 +66,7 @@ git clone https://github.com/Cola-1/FruitLangGS.git --recursive
 
 ---
 ## Datasets
-In the experiments section of our paper, we primarily utilized three datasets: the FruitNeRF Benchmark dataset, PFuji-Size dataset and other three trees (Galafab-West, Schnico-Red-East, Schniga-Schnico-
-West) dataset.
+In the experiments section of our paper, we primarily utilized three datasets: the FruitNeRF Benchmark dataset, PFuji-Size dataset and other three trees (Galafab-West, Schnico-Red-East, Schniga-Schnico-West) dataset.
 
 The  FruitNeRF Benchmark (3Tree and Fuji-SfM) dataset is accessible for download via the following link: [3Tree Dataset](https://zenodo.org/records/10869455) and the [Fuji-SfM Dataset](https://zenodo.org/records/3712808) .
 
@@ -263,8 +264,9 @@ If you find this work useful, please consider citing:
 
 ```bibtex
 @article{li2025countingfruit,
-  title={CountingFruit: Real-Time 3D Fruit Counting with Language-Guided Semantic Gaussian Splatting},
+  title={CountingFruit: Language-Guided 3D Fruit Counting with Semantic Gaussian Splatting},
   author={Li, Fengze and Liu, Yangle and Ma, Jieming and Liang, Hai-Ning and Shen, Yaochun and Li, Huangxiang and Wu, Zhijing},
   journal={arXiv preprint arXiv:2506.01109},
+  doi={https://doi.org/10.48550/arXiv.2506.01109}
   year={2025}
 }
