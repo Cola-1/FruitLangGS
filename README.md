@@ -266,7 +266,7 @@ If you find this work useful, please consider citing:
 @article{li2025countingfruit,
   title={CountingFruit: Language-Guided 3D Fruit Counting with Semantic Gaussian Splatting},
   author={Li, Fengze and Liu, Yangle and Ma, Jieming and Liang, Hai-Ning and Shen, Yaochun and Li, Huangxiang and Wu, Zhijing},
-  journal={arXiv preprint arXiv:2506.01109},
+  journal={arXiv preprint arXiv:2506.01109v3},
   doi={https://doi.org/10.48550/arXiv.2506.01109}
   year={2025}
 }
