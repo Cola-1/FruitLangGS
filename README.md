@@ -1,9 +1,9 @@
 # 🍎 CountingFruit: Language-Guided 3D Fruit Counting with Semantic Gaussian Splatting
 <p align="center">
   <strong>
-    <a href="#">Fengze Li</a>,
-    <a href="#">Yangle Liu</a>,
-    <a href="#">Jieming Ma</a>,
+    Fengze Li *,
+    Yangle Liu *,
+    Jieming Ma,
     Hai-Ning Liang,
     Yaochun Shen,
     Huangxiang Li,
