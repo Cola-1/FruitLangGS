@@ -4,7 +4,7 @@
     <a href="https://uosfz.github.io/UOSFZ/">Fengze Li</a> *,
     <a href="https://YangleLiu.github.io/">Yangle Liu</a> *,
      <a href="https://scholar.xjtlu.edu.cn/en/persons/JiemingMa/">Jieming Ma</a>,
-    <a href="https://facultyprofiles.hkust-gz.edu.cn/faculty-personal-page?id=437">Jieming Ma</a>,
+    <a href="https://facultyprofiles.hkust-gz.edu.cn/faculty-personal-page?id=437">Hai-Ning Liang</a>,
     <a href="https://www.liverpool.ac.uk/people/yaochun-shen">Yaochun Shen</a>,
     Huangxiang Li,
     Zhijing Wu
